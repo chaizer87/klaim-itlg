@@ -1,0 +1,30 @@
+name: Auto Claim Interlink 4 Jam
+
+on:
+  schedule:
+    - cron: '0 */4 * * *'
+  workflow_dispatch:
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Bikin File Config Asli dari Secret
+        run: |
+          cat << 'EOF' > config.json
+          ${{ secrets.CONFIG_JSON }}
+          EOF
+
+      - name: Install Dependencies
+        run: pip install requests colorama
+
+      - name: Jalankan Bot Claim
+        run: python bot_v3.py
