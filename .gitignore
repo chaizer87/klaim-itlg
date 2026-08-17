@@ -1,0 +1,15 @@
+config.json
+token.json
+token-backup.json
+claim_state.json
+accounts.json
+tokens/
+*.log
+token.txt
+refresh_token.txt
+device.txt
+__pycache__/
+*.pyc
+.venv/
+node_modules/
+.bot.pid
