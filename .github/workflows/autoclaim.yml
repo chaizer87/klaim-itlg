@@ -18,13 +18,10 @@ jobs:
           python-version: '3.10'
 
       - name: Bikin File Config Asli dari Secret
-        run: |
-          cat << 'EOF' > config.json
-          ${{ secrets.CONFIG_JSON }}
-          EOF
+        run: echo "${{ secrets.CONFIG_JSON }}" > config.json
 
       - name: Install Dependencies
         run: pip install requests colorama
 
-      - name: Jalankan Bot Claim
-        run: python bot_v3.py
+      - name: Jalankan Bot Claim (Sekali Jalan)
+        run: python bot_v3.py --once
